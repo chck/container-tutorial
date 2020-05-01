@@ -1,12 +1,13 @@
 version: "3.7"
 services:
-  predictor:
-    image: chck/container-tutorial:1.3
+  api:
+    image: chck/container-tutorial:2.1
     build: .
-    environment:
-      - MODEL_PATH=https://storage.googleapis.com/ailab-users/chck/tutorial/model_20191215.pkl.gz
-      #- MODEL_PATH=https://storage.googleapis.com/ailab-users/chck/tutorial/model_20200401.pkl.gz
     ports:
       - "8000:8000"
     volumes:
       - ${PWD}:/app
+    depends_on:
+      - myredis
+  myredis:
+    image: redis:6.0-rc

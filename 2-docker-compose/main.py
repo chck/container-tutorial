@@ -1,18 +1,12 @@
 from fastapi import FastAPI
-import os
-import joblib
-import shutil
-import tempfile
-import urllib.request
+import redis
 
 app = FastAPI()
 
-with urllib.request.urlopen(os.environ["MODEL_PATH"]) as response:
-    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-        shutil.copyfileobj(response, tmp_file)
-
-model = joblib.load(tmp_file.name)
+pool = redis.ConnectionPool(host="myredis", port=6379, db=0)
+redis_cli = redis.StrictRedis(connection_pool=pool)
 
 @app.get("/")
 def root():
-    return {"model": model.__class__.__name__}
+    redis_cli.set("answer", "yes!!")
+    return {"connect?": redis_cli.get("answer")}
