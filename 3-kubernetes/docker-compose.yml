@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   predictor:
-    image: chck/container-tutorial:1.3
+    image: chck/container-tutorial:3.1
     build: .
     environment:
       - MODEL_PATH=https://storage.googleapis.com/ailab-users/chck/tutorial/model_20191215.pkl.gz
