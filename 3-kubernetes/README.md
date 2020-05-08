@@ -11,7 +11,7 @@ minikube start
 
 kubectl get deployments,pods
 
-kubectl create deployment predictor --image=docker.io/chck/container-tutorial:3.1
+kubectl create deployment predictor --image=docker.io/chck/container-tutorial:3.0
 
 kubectl logs $POD_NAME
 
