@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  estimator:
+    image: asia.gcr.io/$(PROJECT_ID)/chck/iris-estimator:1.1
+    build: .
+    environment:
+      - MODEL_PATH=https://storage.googleapis.com/ailab-users/chck/tutorial/model_20210512.pkl.cmp
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${PWD}:/app

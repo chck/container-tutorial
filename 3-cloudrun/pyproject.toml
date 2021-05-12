@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "iris-estimator"
+version = "0.1.0"
+description = ""
+authors = ["chck <shimekiri.today@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.65.0"
+scikit-learn = "^0.24.2"
+lightgbm = "^3.2.1"
+joblib = "^1.0.1"
+uvicorn = {extras = ["standard"], version = "^0.13.4"}
+numpy = "^1.20.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
