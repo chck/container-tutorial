@@ -1,15 +1,16 @@
-version: "3.7"
+version: "3.9"
 services:
   api:
-    image: chck/container-tutorial:2.1
+    image: chck/with-redis:1.0
     build: .
     ports:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
+      - DEBUG=true
     volumes:
       - ${PWD}:/app
     depends_on:
       - myredis
   myredis:
-    image: redis:6.0-rc
+    image: redis:6.2
